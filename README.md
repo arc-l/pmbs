@@ -13,7 +13,8 @@ The parallel version is stable (low variance), different runs have similar resul
 The serial version is unstable (high variance), it could solve the problem very well, or not at all. This is due to the randomness of the tree policy.
 
 ## Supplementary material
-[PMBS_Supplementary.pdf](https://github.com/arc-l/pmbs/files/8199209/PMBS_Supplementary.pdf)
+<!-- [PMBS_Supplementary.pdf](https://github.com/arc-l/pmbs/files/8199209/PMBS_Supplementary.pdf) -->
+[PMBS_Supplementary.pdf](PMBS_Supplementary.pdf)
 
 We are trying to solve the task using the physics simulator. The sim-to-real gap is there, but it is good enough for this type of task (even with pose estimation error).
 
