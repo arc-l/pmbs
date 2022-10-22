@@ -40,6 +40,13 @@ With GUI on, you should expect to see something like this (video has been shorte
 
 https://user-images.githubusercontent.com/20850928/197361606-9d903f67-0e0b-47a5-961c-bd3d62ca9a87.mp4
 
+## Train Grasp Classifier 
+1. Grasp Classifier data collection please refer to collect_grasp_data.py. Generate files first, collect labeled data after.
+2. Training `python train_grasp.py --dataset_root 'logs_grasp'`
+
+## Others
+* Run `python action_utils.py` to pre-record possible actions for each type of objects.
+* Grasp Network (DQN) is taken from https://github.com/arc-l/more.
 
 ## Real robot experiments (videos):
 All experiments are executed under a time budget of 30 seconds (we gave 30 seconds for planning). We end the experiment if the robot cannot solve the task within 16 actions.
