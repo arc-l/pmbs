@@ -1,8 +1,45 @@
+# Parallel Monte Carlo Tree Search with Batched Rigid-body Simulations for Speeding up Long-Horizon Episodic Robot Planning
+
+**Abstract.** We propose a novel Parallel Monte Carlo tree search with Batched Simulations (PMBS) algorithm for accelerating long-horizon, episodic robotic planning tasks. Monte Carlo tree search (MCTS) is an effective heuristic search algorithm for solving episodic decision-making problems whose underlying search spaces are expansive. Leveraging a GPU-based large-scale simulator, PMBS introduces massive parallelism into MCTS for solving planning tasks through the batched execution of a large number of concurrent simulations, which allows for more efficient and accurate evaluations of the expected cost-to-go over large action spaces. When applied to the challenging manipulation tasks of object retrieval from clutter, PMBS achieves a speedup of over 30 $\times$ with an improved solution quality, in comparison to a serial MCTS implementation. We show that PMBS can be directly applied to real robot hardware with negligible sim-to-real differences.
+
+[YouTube (longer version coming soon)](https://youtu.be/6kwnlKhHDBs)&nbsp;&nbsp;•&nbsp;&nbsp;[PDF](https://arxiv.org/abs/2207.06649)&nbsp;&nbsp;•&nbsp;&nbsp;International Conference on Intelligent Robots and Systems (IROS) 2022
+
+*[Baichuan Huang](https://baichuan05.github.io/), [Abdeslam Boularias](http://rl.cs.rutgers.edu/abdeslam.html), [Jingjin Yu](http://jingjinyu.com/)*
+
 ## 1 minutue intro video:
 
 https://user-images.githubusercontent.com/20850928/157065260-b8fc6c1f-7241-4fe2-a372-ae480fe17ae8.mp4
 
-Higher quality video can be found at https://drive.google.com/file/d/1A0D7_eRgr43-qnC6tVDFfvjeFU7L9T-v/view?usp=sharing
+
+## Installation (developed on Ubuntu 18.04, also tested on Ubuntu 20.04)
+1. Download isaac gym preview 4 (developed on preview 3, also tested on preview 4) from Nvidia https://developer.nvidia.com/isaac-gym.
+2. Follow the installation guide from issac gym (in directory of issac gym)
+   1. `./create_conda_env_rlgpu.sh`
+   2. `conda activate rlgpu`
+   3. `export LD_LIBRARY_PATH=/home/xyz/anaconda3/envs/rlgpu/lib` If you are running Ubuntu 20.04
+3. Install extra packages
+   1. `pip install opencv-python==4.5.4.60 graphviz==0.19.1 termcolor colorama pandas pybullet==3.2.4 pynvml`
+4. `mkdir logs_mcts`
+
+## Quick Start (benchmarking as presented in the paper)
+NOTE: We tested on RTX 2080 Ti and RTX A4000. The memory of GPU should be large, if not, you should use a smaller number of environments (look into shell script).
+
+### MCTS-30 (baseline)
+* Run `bash mcts_run.sh`
+* Put all logs in a single folder (inside of `logs_mcts`).
+* Run `python evaluate.py --log 'PATH_TO_FOLDER_OF_MCTS_RECORDS'` to get benchmark result.
+* We have two environments, the first one is for mimicing the real-world environemnt and the second one is for planning.
+
+### PMBS-30 (proposed, 500 environments)
+* Run `bash mcts_parallel_run.sh`
+* Put all logs in a single folder (inside of `logs_mcts`).
+* Run `python evaluate.py --log 'PATH_TO_FOLDER_OF_MCTS_RECORDS'` to get benchmark result.
+* We have 500 environments, the first one is for mimicing the real-world environemnt and all others are for planning.
+
+With GUI on, you should expect to see something like this (video has been shortened as the rendering slow down the simulation):
+
+https://user-images.githubusercontent.com/20850928/197361606-9d903f67-0e0b-47a5-961c-bd3d62ca9a87.mp4
+
 
 ## Real robot experiments (videos):
 All experiments are executed under a time budget of 30 seconds (we gave 30 seconds for planning). We end the experiment if the robot cannot solve the task within 16 actions.
@@ -25,3 +62,17 @@ The simulator could provide accurate physics simulations:
 The simulator could provide not so accurate but reasonable physics simulations:
 
 <img src="https://user-images.githubusercontent.com/20850928/157085771-37fbaeb0-37cc-4b95-8f62-d1dbe69e07bd.png" width="900">
+
+
+## Citing MORE
+If this work helps your research, please cite the [PMBS](https://arxiv.org/abs/2207.06649):
+
+```
+@inproceedings{huang2022parallel,
+  title        = {Parallel Monte Carlo Tree Search with Batched Rigid-body Simulations for Speeding up Long-Horizon Episodic Robot Planning},
+  author       = {Huang, Baichuan and Boularias, Abdeslam and Yu, Jingjin},
+  booktitle    = {The IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year         = {2022},
+  organization = {IEEE}
+}
+```
