@@ -71,7 +71,7 @@ The simulator could provide not so accurate but reasonable physics simulations:
 <img src="https://user-images.githubusercontent.com/20850928/157085771-37fbaeb0-37cc-4b95-8f62-d1dbe69e07bd.png" width="900">
 
 
-## Citing MORE
+## Citing this paper
 If this work helps your research, please cite the [PMBS](https://arxiv.org/abs/2207.06649):
 
 ```
