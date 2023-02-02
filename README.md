@@ -2,7 +2,7 @@
 
 **Abstract.** We propose a novel Parallel Monte Carlo tree search with Batched Simulations (PMBS) algorithm for accelerating long-horizon, episodic robotic planning tasks. Monte Carlo tree search (MCTS) is an effective heuristic search algorithm for solving episodic decision-making problems whose underlying search spaces are expansive. Leveraging a GPU-based large-scale simulator, PMBS introduces massive parallelism into MCTS for solving planning tasks through the batched execution of a large number of concurrent simulations, which allows for more efficient and accurate evaluations of the expected cost-to-go over large action spaces. When applied to the challenging manipulation tasks of object retrieval from clutter, PMBS achieves a speedup of over 30 $\times$ with an improved solution quality, in comparison to a serial MCTS implementation. We show that PMBS can be directly applied to real robot hardware with negligible sim-to-real differences.
 
-[YouTube (longer version coming soon)](https://youtu.be/6kwnlKhHDBs)&nbsp;&nbsp;•&nbsp;&nbsp;[PDF](https://arxiv.org/abs/2207.06649)&nbsp;&nbsp;•&nbsp;&nbsp;International Conference on Intelligent Robots and Systems (IROS) 2022
+[YouTube (presentation)](https://youtu.be/-Br2IBjArgY)&nbsp;&nbsp;•&nbsp;&nbsp;[PDF](https://arxiv.org/abs/2207.06649)&nbsp;&nbsp;•&nbsp;&nbsp;International Conference on Intelligent Robots and Systems (IROS) 2022
 
 *[Baichuan Huang](https://baichuan05.github.io/), [Abdeslam Boularias](http://rl.cs.rutgers.edu/abdeslam.html), [Jingjin Yu](http://jingjinyu.com/)*
 
