@@ -21,6 +21,7 @@ https://user-images.githubusercontent.com/20850928/157065260-b8fc6c1f-7241-4fe2-
    1. `pip install opencv-python==4.5.4.60 graphviz==0.19.1 termcolor colorama pandas pybullet==3.2.4 pynvml`
 4. `mkdir logs_mcts`
 5. Models can be accessed from https://drive.google.com/drive/folders/10VdC2ur7beE1yhmCBal3Ftw8Uhzlq_BH?usp=sharing
+6. In case pytorch errors, try `pip3 install torch==1.8.2 torchvision==0.9.2 torchaudio==0.8.2 --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111`
 
 ## Quick Start (benchmarking as presented in the paper)
 NOTE: We tested on RTX 2080 Ti and RTX A4000. The memory of GPU should be large, if not, you should use a smaller number of environments (look into shell script).
